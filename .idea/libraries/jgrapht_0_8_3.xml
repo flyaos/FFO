@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jgrapht-0.8.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jgrapht-0.8.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
