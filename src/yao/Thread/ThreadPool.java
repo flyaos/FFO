@@ -1,4 +1,4 @@
-package yao.Thread;
+package yao.thread;
 
 /**
  * Created by yao on 2014/8/23.
