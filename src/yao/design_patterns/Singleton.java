@@ -45,12 +45,30 @@ public class Singleton {
         private static final Singleton INSTANCE = new Singleton();
     }
 
+    /**
+     * 4.推荐的做法，双重检查校验
+     * 只会同步一次
+     */
+    private volatile static Singleton uniqueInstance;
+
+    public Singleton getUniqueInstance() {
+        if (uniqueInstance == null) {
+            synchronized (Singleton.class) {
+                if (uniqueInstance == null) {
+                    uniqueInstance = new Singleton();
+                }
+            }
+        }
+
+        return uniqueInstance;
+    }
+
     public static Singleton getInstance3() {
         return LoadSingleton.INSTANCE;
     }
 
     /**
-     * 枚举，java_study 1.5开始有的，推荐的用法
+     * 5.枚举，java_study 1.5 开始有的，推荐的用法
      */
     public enum single {
         INSTANCE;
