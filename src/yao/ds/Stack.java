@@ -2,11 +2,15 @@ package yao.ds;
 
 /**
  * Created by yao on 2014/9/9.
- *
+ * <p/>
  * 栈的简单实现
  */
-public class Stack {
+public class Stack<T> {
     public Node top;
+
+    public Stack() {
+        top = new Node();
+    }
 
     public Node peek() {
         if (top != null) {
@@ -25,7 +29,7 @@ public class Stack {
     }
 
     public void push(Node n) {
-        if(n!=null) {
+        if (n != null) {
             n.next = top;
             top = n;
         }

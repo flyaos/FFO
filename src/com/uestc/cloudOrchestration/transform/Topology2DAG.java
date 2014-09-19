@@ -54,7 +54,7 @@ public class Topology2DAG {
     }
 
 
-    //transform XML file into DAG
+    //Transform XML file into DAG
     public DirectedAcyclicGraph<AbstractElement, DefaultEdge> parse() {
 
         parseNodeTemplates();

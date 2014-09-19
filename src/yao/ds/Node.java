@@ -6,8 +6,8 @@ package yao.ds;
  * 链表或者栈节点数据结构
  */
 public class Node<T> {
-    private T item;
-    private Node next;
+    T item;
+    Node next;
 
     public Node() {
         this(null, null);

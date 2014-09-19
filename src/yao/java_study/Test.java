@@ -4,6 +4,7 @@ package yao.java_study;
  * Created by yao on 2014/8/18.
  */
 public class Test {
+
     public static void main(String[] args) {
 
         /**
