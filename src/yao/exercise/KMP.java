@@ -62,6 +62,23 @@ public class KMP {
             }
         }
 
+        // 这是更直观的表达
+        int m = 0;
+        int n = 0;
+        while (m < source.length && n < target.length) {
+            if (source[m] == target[n] || n == 0) { // 当两个字符相同，就比较下一个
+                m++;
+                if (n != 0)
+                    n++;
+            } else {
+                n = next[n];
+            }
+        }
+
+        if (n == target.length) {
+            return true;
+        }
+
         return con;
     }
 
