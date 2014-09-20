@@ -66,10 +66,9 @@ public class KMP {
         int m = 0;
         int n = 0;
         while (m < source.length && n < target.length) {
-            if (source[m] == target[n] || n == 0) { // 当两个字符相同，就比较下一个
+            if (source[m] == target[n] || n == -1) { // 当两个字符相同，就比较下一个, 当n为-1时，要移动的是m，当然n也要归0
                 m++;
-                if (n != 0)
-                    n++;
+                n++;
             } else {
                 n = next[n];
             }
@@ -85,19 +84,20 @@ public class KMP {
     // 预处理获取 next 数组
     static int[] getNext(String P) {
         char p[] = P.toCharArray();
-        int size = p.length;
-        int next[] = new int[size];
-        int j = 0; // 最大前后缀匹配长度
-        next[0] = 0;
-        for (int i = 1; i < size; i++) {
-            while (j > 0 && p[i] != p[j]) {
-                j = next[j - 1]; // 这里最关键，弄懂其原理，递归理解
-            }                    // http://www.cnblogs.com/yjiyjige/p/3263858.html
-            if (p[i] == p[j]) {
-                j++;
+        int next[] = new int[p.length];
+
+        int k = -1; // 最大前后缀匹配长度
+        int j = 0;
+        next[0] = -1;
+
+        while (j < p.length) {
+            if (k == -1 || p[j] == p[k]) {
+                next[++j] = ++k;
+            } else {
+                k = next[k];
             }
-            next[i] = j;
         }
+
         return next;
     }
 
