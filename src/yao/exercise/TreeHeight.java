@@ -41,7 +41,10 @@ public class TreeHeight {
 
     private static int getHeight(int i) {
         int length = 0;
-        visited[i] = true; // 已访问
+
+        if(!visited[i])
+            visited[i] = true; // 已访问
+
         int parent = treeNode[i];
         while (parent != -1) {
             visited[parent] = true;
