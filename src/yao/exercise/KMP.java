@@ -74,7 +74,7 @@ public class KMP {
         next[0] = 0;
         for (int i = 1; i < size; i++) {
             while (j > 0 && p[i] != p[j]) {
-                j = next[j];
+                j = next[j - 1];
             }
             if (p[i] == p[j]) {
                 j++;
@@ -87,7 +87,7 @@ public class KMP {
 
     public static void main(String[] args) {
         String a = "a abdabdcdefg";
-        String b = "abdc";
+        String b = "afaaff";
 
         System.out.println(kmp(a, b));
     }
