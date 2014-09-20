@@ -91,8 +91,8 @@ public class KMP {
         next[0] = 0;
         for (int i = 1; i < size; i++) {
             while (j > 0 && p[i] != p[j]) {
-                j = next[j - 1];
-            }
+                j = next[j - 1]; // 这里最关键，弄懂其原理，递归理解
+            }                    // http://www.cnblogs.com/yjiyjige/p/3263858.html
             if (p[i] == p[j]) {
                 j++;
             }
