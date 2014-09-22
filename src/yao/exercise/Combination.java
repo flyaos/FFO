@@ -19,7 +19,7 @@ public class Combination {
         for (int i = 1; i <= n; i++) {
             StringBuilder sb = new StringBuilder();
             for (int j = 0; j < len; j++) {
-                int temp = 1 << j;
+                int temp = 1 << j;  // temp 变化：1 010 0100 01000
                 if ((temp & i) != 0) {
                     sb.append(array[j]);
                 }
