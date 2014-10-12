@@ -111,9 +111,9 @@ public class TaxCompute {
     }
 
     /**
-     * print a row
+     * print current line after cal
      */
-    public String getOutPutLine(String[] inputs, float finaPrice) {
+    public void printCurrentLine(String[] inputs, float finaPrice) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < inputs.length - 2; i++) {
             sb.append(inputs[i]).append(" ");
@@ -121,7 +121,7 @@ public class TaxCompute {
 
         sb.append(": ").append(finaPrice);
 
-        return sb.toString();
+        System.out.println(sb.toString());
 
     }
 
@@ -169,9 +169,7 @@ public class TaxCompute {
                 salesTaxes += finaPrice - price;
                 total += finaPrice;
 
-                // print
-                String output_line = getOutPutLine(inputs, finaPrice);
-                System.out.println(output_line);
+                printCurrentLine(inputs, finaPrice);
 
             }
         }
