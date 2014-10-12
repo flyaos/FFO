@@ -174,9 +174,9 @@ public class TaxCompute {
             }
         }
 
-        // break the while, The last time, print the total
+        // break of while, The last time, print the total
         System.out.println("Sales Taxes: " + salesTaxes);
-        System.out.println("Total:: " + total);
+        System.out.println("Total: " + total);
 
     }
 
