@@ -11,28 +11,29 @@ import java.util.HashSet;
  *
  */
 
-/**************************************************
- *
+/**
+ * ***********************************************
+ * <p/>
  * d:\a.txt just as follows:
- *
-     Input 1
-     2 book at 12.49
-     2 music CD at 14.99
-     1 chocolate bar at 0.85
-     1 packet of headache pills at 9.75
-     1 imported box of chocolate at 10.50
-     Input 2
-     2 music CD at 14.99
-     1 chocolate bar at 0.85
-     1 packet of headache pills at 9.75
-     Input 3
-     2 book at 12.49
-     2 music CD at 14.99
-     1 chocolate bar at 0.85
-     1 imported box of chocolate at 10.50
- *
- *
- ****************************************************
+ * <p/>
+ * Input 1
+ * 2 book at 12.49
+ * 2 music CD at 14.99
+ * 1 chocolate bar at 0.85
+ * 1 packet of headache pills at 9.75
+ * 1 imported box of chocolate at 10.50
+ * Input 2
+ * 2 music CD at 14.99
+ * 1 chocolate bar at 0.85
+ * 1 packet of headache pills at 9.75
+ * Input 3
+ * 2 book at 12.49
+ * 2 music CD at 14.99
+ * 1 chocolate bar at 0.85
+ * 1 imported box of chocolate at 10.50
+ * <p/>
+ * <p/>
+ * ***************************************************
  */
 
 public class TaxCompute {
@@ -75,8 +76,7 @@ public class TaxCompute {
             if (line.toLowerCase().contains("input")) {
                 if (l == 1) {
                     System.out.println("Output " + l);
-                }
-                if (l > 1) {
+                } else {
                     // print previous cal result
                     System.out.println("Sales Taxes: " + salesTaxes);
                     System.out.println("Total:: " + total);
