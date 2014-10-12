@@ -4,7 +4,8 @@ import java.io.*;
 import java.util.HashSet;
 
 /**
- * Created by yao on 2014/10/12.
+ * Created by yao
+ * Time:2014/10/12 01:20
  *
  * ThoughtWorks exercise
  *
@@ -37,7 +38,7 @@ import java.util.HashSet;
 public class TaxCompute {
 
     /**
-     * exempts goods
+     * filter of exempts goods
      */
     public static HashSet<String> exempts = new HashSet<String>();
 
@@ -46,6 +47,70 @@ public class TaxCompute {
         exempts.add("book");
         exempts.add("headache");
         exempts.add("pills");
+    }
+
+    /**
+     * main
+     */
+    public static void main(String[] args) throws IOException {
+        TaxCompute tc = new TaxCompute();
+        tc.calculate("E:\\a.txt");
+
+    }
+
+    /**
+     * calculate and print
+     *
+     * @throws IOException
+     */
+    public void calculate(String path) throws IOException {
+
+        BufferedReader br = new BufferedReader(new FileReader(path));
+        String line;
+        float total = 0;
+        float salesTaxes = 0;
+        int l = 1; // input group number
+
+        while ((line = br.readLine()) != null) {
+            if (line.toLowerCase().contains("input")) {
+                if (l == 1) {
+                    System.out.println("Output " + l);
+                }
+                if (l > 1) {
+                    // print previous cal result
+                    System.out.println("Sales Taxes: " + salesTaxes);
+                    System.out.println("Total:: " + total);
+
+                    // print next output number
+                    System.out.println("Output " + l);
+
+                    // clear to zero
+                    total = 0;
+                    salesTaxes = 0;
+                }
+                l++;
+            } else {
+                String[] inputs = line.split(" ");
+                int num = Integer.parseInt(inputs[0]);
+                float price = Float.parseFloat(inputs[inputs.length - 1]);
+                float finaPrice = num * price;
+
+                float rate = getRate(inputs);       // get the rate
+                finaPrice = finaPrice * (1 + rate); // the final price
+
+                // make a sum
+                salesTaxes += finaPrice - price;
+                total += finaPrice;
+
+                printCurrentLine(inputs, finaPrice);
+
+            }
+        }
+
+        // break of while, The last time, print the total
+        System.out.println("Sales Taxes: " + salesTaxes);
+        System.out.println("Total: " + total);
+
     }
 
     /**
@@ -125,66 +190,5 @@ public class TaxCompute {
 
     }
 
-    /**
-     * calculate and print
-     *
-     * @throws IOException
-     */
-    public void calculate(String path) throws IOException {
-
-        BufferedReader br = new BufferedReader(new FileReader(path));
-        String line;
-        float total = 0;
-        float salesTaxes = 0;
-        int l = 1; // input group number
-
-        while ((line = br.readLine()) != null) {
-            if (line.toLowerCase().contains("input")) {
-                if (l == 1) {
-                    System.out.println("Output " + l);
-                }
-                if (l > 1) {
-                    // print previous cal result
-                    System.out.println("Sales Taxes: " + salesTaxes);
-                    System.out.println("Total:: " + total);
-
-                    // print next output number
-                    System.out.println("Output " + l);
-
-                    // clear to zero
-                    total = 0;
-                    salesTaxes = 0;
-                }
-                l++;
-            } else {
-                String[] inputs = line.split(" ");
-                int num = Integer.parseInt(inputs[0]);
-                float price = Float.parseFloat(inputs[inputs.length - 1]);
-                float finaPrice = num * price;
-
-                float rate = getRate(inputs);       // get the rate
-                finaPrice = finaPrice * (1 + rate); // the final price
-
-                // make a sum
-                salesTaxes += finaPrice - price;
-                total += finaPrice;
-
-                printCurrentLine(inputs, finaPrice);
-
-            }
-        }
-
-        // break of while, The last time, print the total
-        System.out.println("Sales Taxes: " + salesTaxes);
-        System.out.println("Total: " + total);
-
-    }
-
-
-    public static void main(String[] args) throws IOException {
-        TaxCompute tc = new TaxCompute();
-        tc.calculate("E:\\a.txt");
-
-    }
 
 }
