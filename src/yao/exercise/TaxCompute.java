@@ -5,13 +5,39 @@ import java.util.HashSet;
 
 /**
  * Created by yao on 2014/10/12.
- * <p/>
- * ThoughtWorks 笔试题
+ *
+ * ThoughtWorks exercise
+ *
  */
+
+/**************************************************
+ *
+ * d:\a.txt just as follows:
+ *
+     Input 1
+     2 book at 12.49
+     2 music CD at 14.99
+     1 chocolate bar at 0.85
+     1 packet of headache pills at 9.75
+     1 imported box of chocolate at 10.50
+     Input 2
+     2 music CD at 14.99
+     1 chocolate bar at 0.85
+     1 packet of headache pills at 9.75
+     Input 3
+     2 book at 12.49
+     2 music CD at 14.99
+     1 chocolate bar at 0.85
+     1 imported box of chocolate at 10.50
+ *
+ *
+ ****************************************************
+ */
+
 public class TaxCompute {
 
     /**
-     * 免税关键词
+     * exempts goods
      */
     public static HashSet<String> exempts = new HashSet<String>();
 
@@ -23,7 +49,7 @@ public class TaxCompute {
     }
 
     /**
-     * 添加免税物品的关键词
+     * add exempts keywords
      */
     public void addExempts(String key) {
         if (!exempts.contains(key)) {
@@ -32,7 +58,7 @@ public class TaxCompute {
     }
 
     /**
-     * 移除免税物品的关键词
+     * remove exempts keywords
      */
     public void removeExempts(String key) {
         if (exempts.contains(key)) {
@@ -41,21 +67,21 @@ public class TaxCompute {
     }
 
     /**
-     * 判断是否免税
+     * whether is exempts
      */
     public boolean isExempt(String key) {
         return exempts.contains(key) ? true : false;
     }
 
     /**
-     * 是否进口
+     * whether is imported
      */
     public boolean isImported(String key) {
         return key.contains("imported") ? true : false;
     }
 
     /**
-     * 返回当前行的税率
+     * calculate the total rate of a row of item
      */
     float getRate(String[] inputs) {
         int len = inputs.length;
@@ -85,7 +111,7 @@ public class TaxCompute {
     }
 
     /**
-     * 输出一行
+     * print a row
      */
     public String getOutPutLine(String[] inputs, float finaPrice) {
         StringBuilder sb = new StringBuilder();
@@ -100,18 +126,17 @@ public class TaxCompute {
     }
 
     /**
-     * 计算并打印输出
+     * calculate and print
      *
      * @throws IOException
      */
-    public void calculate() throws IOException {
+    public void calculate(String path) throws IOException {
 
-        String path = "E:\\a.txt";
         BufferedReader br = new BufferedReader(new FileReader(path));
         String line;
         float total = 0;
         float salesTaxes = 0;
-        int l = 1;
+        int l = 1; // input group number
 
         while ((line = br.readLine()) != null) {
             if (line.toLowerCase().contains("input")) {
@@ -119,40 +144,39 @@ public class TaxCompute {
                     System.out.println("Output " + l);
                 }
                 if (l > 1) {
-                    // 打印上一次计算的结果
+                    // print previous cal result
                     System.out.println("Sales Taxes: " + salesTaxes);
                     System.out.println("Total:: " + total);
 
-                    // 打印下一次的输出序号
+                    // print next output number
                     System.out.println("Output " + l);
 
-                    //打印完清零
+                    // clear to zero
                     total = 0;
                     salesTaxes = 0;
                 }
                 l++;
             } else {
-                // 处理一行
                 String[] inputs = line.split(" ");
                 int num = Integer.parseInt(inputs[0]);
                 float price = Float.parseFloat(inputs[inputs.length - 1]);
                 float finaPrice = num * price;
 
-                float rate = getRate(inputs);       // 本行的税率
-                finaPrice = finaPrice * (1 + rate); // 本行的最终价格
+                float rate = getRate(inputs);       // get the rate
+                finaPrice = finaPrice * (1 + rate); // the final price
 
-                // 求和
+                // make a sum
                 salesTaxes += finaPrice - price;
                 total += finaPrice;
 
-                // 输出
+                // print
                 String output_line = getOutPutLine(inputs, finaPrice);
                 System.out.println(output_line);
 
             }
         }
 
-        // 最后跳出，最后一次打印
+        // break the while, The last time, print the total
         System.out.println("Sales Taxes: " + salesTaxes);
         System.out.println("Total:: " + total);
 
@@ -161,9 +185,8 @@ public class TaxCompute {
 
     public static void main(String[] args) throws IOException {
         TaxCompute tc = new TaxCompute();
-        tc.calculate();
+        tc.calculate("E:\\a.txt");
 
     }
-
 
 }
