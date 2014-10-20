@@ -43,7 +43,7 @@ public class KMP {
         char[] source = a.toCharArray();
         char[] target = b.toCharArray();
 
-        int[] next = getNext(b);
+        int[] next = getNext(b); // 获取 next 数组
         int j = 0;
 
         for (int i = 0; i < source.length; i++) {
@@ -66,7 +66,8 @@ public class KMP {
         int m = 0;
         int n = 0;
         while (m < source.length && n < target.length) {
-            if (source[m] == target[n] || n == -1) { // 当两个字符相同，就比较下一个, 当n为-1时，要移动的是m，当然n也要归0
+            // 当两个字符相同，就比较下一个, 当n为-1时，要移动的是m，当然n也要归0
+            if (source[m] == target[n] || n == -1) {
                 m++;
                 n++;
             } else {
