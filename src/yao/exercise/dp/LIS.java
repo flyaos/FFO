@@ -24,10 +24,10 @@ public class LIS {
      * @return
      */
     private static int[] Lis(int[] data) {
-        int[] LIS = new int[data.length];
+        int[] LIS = new int[data.length]; // 保存从0到n-1的最长连续递增序列
         for (int i = 0; i < data.length; i++) {
             // 每个初始化为 1，只包含自己
-            LIS[i] =  1;
+            LIS[i] = 1;
             // 找出当前的 LIS[i] 前面的最长序列
             // 判断里面 LIS[j] + 1 > LIS[i] 保证 LIS[i] 更新最大值
             for (int j = 0; j < i; j++) {
