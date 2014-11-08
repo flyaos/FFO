@@ -1,4 +1,4 @@
-package yao.ds;
+package yao.ds.tree;
 
 /**
  * Created by log on 14-8-29.

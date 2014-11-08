@@ -1,4 +1,4 @@
-package yao.ds;
+package yao.ds.Graph;
 
 /**
  * Created by yao on 2014/9/4.

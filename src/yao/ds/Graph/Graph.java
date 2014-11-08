@@ -1,4 +1,6 @@
-package yao.ds;
+package yao.ds.Graph;
+
+import yao.ds.Bag;
 
 /**
  * Created by yao on 2014/9/4.

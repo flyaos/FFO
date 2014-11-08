@@ -1,4 +1,7 @@
-package yao.ds;
+package yao.ds.Graph;
+
+import yao.ds.IListable;
+import yao.ds.Node;
 
 /**
  * Created by yao on 2014/9/12.

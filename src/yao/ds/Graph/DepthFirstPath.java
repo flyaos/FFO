@@ -1,4 +1,4 @@
-package yao.ds;
+package yao.ds.Graph;
 
 import java.util.ArrayList;
 
