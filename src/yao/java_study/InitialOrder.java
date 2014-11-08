@@ -2,7 +2,7 @@ package yao.java_study;
 
 /**
  * Created by yao on 2014/9/20.
- *
+ * <p/>
  * 类的初始化顺序：静态变量 > 静态初始化块 > 变量 > 初始化块 > 构造器
  */
 public class InitialOrder {
